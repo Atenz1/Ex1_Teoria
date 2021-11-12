@@ -33,14 +33,13 @@ int main()
 {
     list<Grafo> lgrafo;
     int c = 0;
-    while(c != 6){
+    while(c != 5){
         cout<< "--- QUE TAREA DESEAS REALIZAR ---" << endl;
         cout << "01 CREAR GRAFO." << endl;
         cout << "02 AGREGAR UN VERTICE A UN GRAFO ESPECIFICO" << endl;
         cout << "03 AGREGAR UNA ARISTA A UN GRAFO ESPECIFICO" << endl;
         cout << "04 IMPRIMIR UN GRAFO" << endl;
-        cout << "05 IMPRIMIR LISTA DE GRAFOS EXISTENTES" << endl;
-        cout << "06 SALIR DEL PROGRAMA" << endl;
+        cout << "05 SALIR DEL PROGRAMA" << endl;
         cin>>c;
         switch(c)
         {
@@ -84,6 +83,50 @@ int main()
             break;
             case 3:
             {
+                int n=0;
+                int m=0;
+                int i=0;
+                int j=0;
+                list<Grafo> ::iterator pos;
+                Cset stv("entero");
+                Cset ste("secuencia");
+                Grafo cs  (stv, ste);
+                list<Grafo> lcentinela;
+                cout<<"\t Escribe el indice del grafo a afectar. [ 0 - "<<(lgrafo.size()-1)<<" ]"<<endl;
+                cin>>i;
+                if(i>=0&&i<lgrafo.size()){
+                    pos = lgrafo.begin();
+                    while(pos != lgrafo.end()){
+                        if(i==j){
+                            cs = *pos;
+                        }
+                        pos++;
+                        j++;
+                    }
+                }
+                Csecuencia f;
+                //cout<<"\t VERTICES ACTUALES DEL GRAFO: "<<cs.stv.imprimir()<<endl;
+                cout<<"\t Ingresa el primer vertice de la arista a insertar:"<<endl;
+                cin>>n;
+                f.insertarElemento(n);
+                cout<<"\t Ingresa el segundo vertice de la arista a insertar:"<<endl;
+                cin>>m;
+                f.insertarElemento(m);
+                cs.ste.insertarElemento(f);
+                j=0;
+
+                pos = lgrafo.begin();
+                while(pos != lgrafo.end()){
+                    Grafo t = *pos;
+                    if(i==j){
+                        lcentinela.push_back(cs);
+                    }else{
+                        lcentinela.push_back(t);
+                    }
+                    pos++;
+                    j++;
+                }
+                lgrafo = lcentinela;
 
             }
             break;
@@ -114,18 +157,13 @@ int main()
                 }
             }
             break;
+
             case 5:
-            {
-
-            }
-            break;
-
-            case 6:
                 cout<<"FIN DEL PROGRAMA..."<<endl;
                 break;
             default: cout<<"El numero ingresado es invalido intentalo de nuevo."<<endl;
         }
-        if(c>=1&&c<6){
+        if(c>=1&&c<5){
             int cl=0;
             cout<<" "<<endl;
             cout<<"DESEAS LIMPIAR LA PANTALL?"<<endl;
