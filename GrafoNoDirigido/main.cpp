@@ -10,23 +10,20 @@
 
 using namespace std;
 
-
-void imprimirLista(list<int>& datos){
+bool estaEnLista(int n, list<int> lenteros){
+    bool esta = false;
     list<int> ::iterator pos;
     list<int> ::iterator fin;
-    pos = datos.begin();
-    fin = datos.end();
+    pos = lenteros.begin();
+    fin = lenteros.end();
     fin--;
-    cout<<"Lista -> ";
-    cout<<" { ";
-    while(pos != datos.end()){
-        cout<<*pos;
-        if(pos != fin){
-            cout<<" , ";
+    while(pos != lenteros.end()){
+        if(*pos == n){
+            esta = true;
         }
         pos++;
     }
-    cout<<" }"<<endl;
+    return esta;
 }
 
 int main()
@@ -105,29 +102,33 @@ int main()
                     }
                 }
                 Csecuencia f;
-                //cout<<"\t VERTICES ACTUALES DEL GRAFO: "<<cs.stv.imprimir()<<endl;
+                cout<<"\t VERTICES ACTUALES DEL GRAFO: ";
+                cs.stv.imprimir();
+                cout<<endl;
                 cout<<"\t Ingresa el primer vertice de la arista a insertar:"<<endl;
                 cin>>n;
                 f.insertarElemento(n);
                 cout<<"\t Ingresa el segundo vertice de la arista a insertar:"<<endl;
                 cin>>m;
                 f.insertarElemento(m);
-                cs.ste.insertarElemento(f);
-                j=0;
-
-                pos = lgrafo.begin();
-                while(pos != lgrafo.end()){
-                    Grafo t = *pos;
-                    if(i==j){
-                        lcentinela.push_back(cs);
-                    }else{
-                        lcentinela.push_back(t);
+                if(estaEnLista(n,cs.stv.datos)&& estaEnLista(m,cs.stv.datos)){
+                    cs.ste.insertarElemento(f);
+                    j=0;
+                    pos = lgrafo.begin();
+                    while(pos != lgrafo.end()){
+                        Grafo t = *pos;
+                        if(i==j){
+                            lcentinela.push_back(cs);
+                        }else{
+                            lcentinela.push_back(t);
+                        }
+                        pos++;
+                        j++;
                     }
-                    pos++;
-                    j++;
+                    lgrafo = lcentinela;
+                }else{
+                    cout<<"Los numeros deben estar entre los vertices del grafo."<<endl;
                 }
-                lgrafo = lcentinela;
-
             }
             break;
             case 4:
