@@ -31,14 +31,14 @@ void imprimirLista(list<int>& datos){
 
 int main()
 {
-    list<Conjunto*> lconjunto;
+    list<Grafo> lgrafo;
     int c = 0;
-    while(c != 8){
+    while(c != 6){
         cout<< "--- QUE TAREA DESEAS REALIZAR ---" << endl;
         cout << "01 CREAR GRAFO." << endl;
-        cout << "02 CREAR VERTICES" << endl;
-        cout << "03 CREAR ARISTA" << endl;
-        cout << "04 IMPRIMIR GRAFO" << endl;
+        cout << "02 AGREGAR UN VERTICE A UN GRAFO ESPECIFICO" << endl;
+        cout << "03 AGREGAR UNA ARISTA A UN GRAFO ESPECIFICO" << endl;
+        cout << "04 IMPRIMIR UN GRAFO" << endl;
         cout << "05 IMPRIMIR LISTA DE GRAFOS EXISTENTES" << endl;
         cout << "06 SALIR DEL PROGRAMA" << endl;
         cin>>c;
@@ -46,12 +46,40 @@ int main()
         {
             case 1:
             {
-
+                Cset stv("entero");
+                Cset ste("secuencia");
+                Grafo g(stv, ste);
+                lgrafo.push_back(g);
             }
             break;
             case 2:
             {
+                int n=0;
+                int i=0;
+                int j=0;
+                list<Grafo> lcentinela;
+                cout<<"\t Escribe el indice del grafo a afectar. [ 0 - "<<(lgrafo.size()-1)<<" ]"<<endl;
+                cin>>i;
+                cout<<"\t Ingresa el numero a insertar:"<<endl;
+                cin>>n;
+                if(i>=0&&i<lgrafo.size()){
+                    list<Grafo> ::iterator pos;
+                    pos = lgrafo.begin();
+                    while(pos != lgrafo.end()){
+                        Grafo cs = *pos;
+                        if(i==j){
+                            cs.stv.insertarElemento(n);
+                            cs.stv.imprimir();
+                        }
+                        lcentinela.push_back(cs);
+                        pos++;
+                        j++;
+                    }
+                    lgrafo = lcentinela;
 
+                }else{
+                    cout<<"Indice invalido, el grafo al que trata de acceder no existe"<<endl;
+                }
             }
             break;
             case 3:
@@ -61,7 +89,29 @@ int main()
             break;
             case 4:
             {
-
+                int i=0;
+                int j=0;
+                cout<<"\t Escribe el indice del grafo a imprimir. [ 0 - "<<(lgrafo.size()-1)<<" ]"<<endl;
+                cin>>i;
+                if(i>=0&&i<lgrafo.size()){
+                    list<Grafo> ::iterator pos;
+                    pos = lgrafo.begin();
+                    while(pos != lgrafo.end()){
+                        if(i==j){
+                            cout<<"G = { ";
+                            Grafo cs = *pos;
+                            cs.stv.imprimir();
+                            cout<<",";
+                            cs.ste.imprimir();
+                            //cs.stv.insertarElemento(n);
+                            cout<<" }"<<endl;
+                        }
+                        pos++;
+                        j++;
+                    }
+                }else{
+                    cout<<"Indice invalido, el grafo al que trata de acceder no existe"<<endl;
+                }
             }
             break;
             case 5:

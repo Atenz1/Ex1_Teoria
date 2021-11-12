@@ -14,7 +14,7 @@
 	<list>
 	"Conjunto.h"
 
-1636683831 source:c:\users\brayan\desktop\proyectobrayan\grafonodirigido\cset.cpp
+1636694112 source:c:\users\brayan\desktop\proyectobrayan\grafonodirigido\cset.cpp
 	"Cset.h"
 
 1636684289 c:\users\brayan\desktop\proyectobrayan\grafonodirigido\cset.h
@@ -23,7 +23,7 @@
 	"Conjunto.h"
 	"Csecuencia.h"
 
-1636684639 source:c:\users\brayan\desktop\proyectobrayan\grafonodirigido\main.cpp
+1636691106 source:c:\users\brayan\desktop\proyectobrayan\grafonodirigido\main.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
@@ -32,17 +32,17 @@
 	"Conjunto.h"
 	"Csecuencia.h"
 	"Cset.h"
-
-1636685056 source:c:\users\brayan\desktop\proyectobrayan\grafonodirigido\grafo.cpp
 	"Grafo.h"
 
-1636685054 c:\users\brayan\desktop\proyectobrayan\grafonodirigido\grafo.h
+1636690688 source:c:\users\brayan\desktop\proyectobrayan\grafonodirigido\grafo.cpp
+	"Grafo.h"
+
+1636690428 c:\users\brayan\desktop\proyectobrayan\grafonodirigido\grafo.h
 	<iostream>
 	<cstdlib>
 	<iomanip>
 	<list>
 	<stdlib.h>
 	"Conjunto.h"
-	"Csecuencia.h"
 	"Cset.h"
 
